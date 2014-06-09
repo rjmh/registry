@@ -46,6 +46,9 @@ register_next(S,_,[Name,Pid]) ->
 unregister_args(_) ->
   [name()].
 
+unregister_pre(S,[Name]) ->
+  lists:keymember(Name,1,S#state.regs).
+
 unregister(Name) ->
   erlang:unregister(Name).
 
