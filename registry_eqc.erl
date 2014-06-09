@@ -68,3 +68,11 @@ prop_registry() ->
             {H, S, Res} = run_commands(?MODULE,Cmds),
             check_commands(?MODULE, Cmds, {H, S, Res})
           end).
+
+prop_parallel() ->
+  ?FORALL(Cmds, parallel_commands(?MODULE),
+          begin
+            [catch erlang:unregister(N) || N <- ?names],
+            {H, S, Res} = run_parallel_commands(?MODULE,Cmds),
+            check_commands(?MODULE, Cmds, {H, S, Res})
+          end).
