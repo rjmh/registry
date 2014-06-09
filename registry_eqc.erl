@@ -35,6 +35,9 @@ register_pre(S) ->
 register_args(S) ->
   [name(),elements(S#state.pids)].
 
+register_pre(S,[Name,_]) ->
+  not lists:keymember(Name,1,S#state.regs).
+
 register(Name,Pid) ->
   erlang:register(Name,Pid).
 
