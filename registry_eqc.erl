@@ -37,7 +37,7 @@ register_args(S) ->
 
 register_pre(S,[Name,Pid]) ->
   not lists:keymember(Name,1,S#state.regs) andalso 
-    not lists:keymember(Pid,2,S#State.regs).
+    not lists:keymember(Pid,2,S#state.regs).
 
 register(Name,Pid) ->
   erlang:register(Name,Pid).
