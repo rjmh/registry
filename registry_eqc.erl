@@ -56,6 +56,9 @@ unregister_pre(S,[Name]) ->
 unregister(Name) ->
   erlang:unregister(Name).
 
+unregister_next(S,_,[Name]) ->
+  S#state{regs=lists:keydelete(Name,1,S#state.regs)}.
+
 %% the property
 
 prop_registry() ->
