@@ -49,7 +49,7 @@ unregister_args(_) ->
 unregister(Name) ->
   erlang:unregister(Name).
 
-unregister_pre(Name) ->
+unregister_pre(S,[Name]) ->
   lists:keymember(Name,1,S#state.regs).
 
 %% the property
