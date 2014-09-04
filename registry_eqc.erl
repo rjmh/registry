@@ -52,6 +52,9 @@ unregister(Name) ->
 unregister_pre(S,[Name]) ->
   lists:keymember(Name,1,S#state.regs).
 
+unregister_next(S,_,[Name]) ->
+  S#state{regs=lists:keydelete(Name,1,S#state.regs)}.
+
 %% the property
 
 prop_registry() ->
