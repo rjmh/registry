@@ -38,8 +38,8 @@ register_args(S) ->
 register(Name,Pid) ->
   erlang:register(Name,Pid).
 
-register_pre(S,[Name,Pid]) ->
-  not lists:keymember(Name,1,S#state.regs).
+%% register_pre(S,[Name,Pid]) ->
+%%   not lists:keymember(Name,1,S#state.regs).
 
 register_next(S,_,[Name,Pid]) ->
   S#state{regs=S#state.regs++[{Name,Pid}]}.
@@ -52,8 +52,8 @@ unregister_args(_) ->
 unregister(Name) ->
   erlang:unregister(Name).
 
-unregister_pre(S,[Name]) ->
-  lists:keymember(Name,1,S#state.regs).
+%% unregister_pre(S,[Name]) ->
+%%   lists:keymember(Name,1,S#state.regs).
 
 %% the property
 
