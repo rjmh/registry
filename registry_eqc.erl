@@ -39,7 +39,8 @@ register(Name,Pid) ->
   erlang:register(Name,Pid).
 
 register_pre(S,[Name,Pid]) ->
-  not lists:keymember(Name,1,S#state.regs).
+  not lists:keymember(Name,1,S#state.regs)
+    andalso not lists:keymember(Pid,2,S#state.regs).
 
 register_next(S,_,[Name,Pid]) ->
   S#state{regs=S#state.regs++[{Name,Pid}]}.
