@@ -41,6 +41,9 @@ register(Name,Pid) ->
 register_next(S,_,[Name,Pid]) ->
   S#state{regs=S#state.regs++[{Name,Pid}]}.
 
+register_pre(S,[Name,Pid]) ->
+  not lists:keymember(Name,1,S#state.regs).
+
 %% unregister
 
 unregister_args(_) ->
